@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tarian Daerah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/yourkitcode.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Inter:wght@400;600&family=Inknut+Antiqua:wght@400;700&family=Instrument+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: "Instrument Sans", sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .nav-link.active {
+        border: 2px solid white;
+        border-radius: 9999px;
+        padding: 0.25rem 0.5rem;
+      }
+
+      .nav-scrolled {
+        background-color: rgba(181, 89, 42, 0.9);
+        transition: background-color 0.3s ease-in-out;
+      }
+      h1 {
+        font-family: "Jolly Lodger";
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen items-center flex flex-col">
+    <header id="navbar" class="bg-[#B5592A] text-white px-6 py-2 flex items-center justify-between fixed top-0 left-0 w-full z-50 transition duration-300" style="font-family: 'Jolly Lodger', cursive">
+      <h1 class="text-4xl text-yellow-400" style="width: 180px">Visit Nusantara</h1>
+
+      <div class="flex items-center space-x-3">
+        <!-- Tombol Login -->
+        <a href="loginpage.html" class="bg-yellow-300 text-white text-5x1 px-5 py-2 rounded shadow-md hover:bg-yellow-400 transition" type="button">Login</a>
+
+        <!-- Tombol Menu Burger -->
+        <button id="nav-toggle" class="block focus:outline-none" aria-label="Toggle Menu">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <nav id="nav-menu" class="fixed top-0 right-0 bg-[#B5592A] text-white rounded-l-2xl z-50 hidden" style="font-family: 'Inter', sans-serif">
+      <div class="p-4">
+        <div class="flex justify-end">
+          <button id="close-nav" aria-label="Tutup Menu" class="text-2xl font-bold">&times;</button>
+        </div>
+
+        <div class="mt-4 mb-6">
+          <div class="flex gap-2">
+            <div class="relative w-1/2">
+              <input type="text" placeholder="Search" class="w-full px-3 py-1 text-sm text-gray-700 rounded shadow pr-8 focus:outline-none" />
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 absolute right-2 top-1/2 transform -translate-y-1/2 text-[#B5592A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103 10.5a7.5 7.5 0 0013.15 6.15z" />
+              </svg>
+            </div>
+            <select name="provinsi" id="provinsi" class="w-1/2 text-sm bg-white text-gray-700 px-2 py-1 rounded shadow" onchange="redirectToProvinsi()">
+              <option value="">Pilih Provinsi</option>
+              <option value="aceh">Nanggroe Aceh Darussalam</option>
+              <option value="sumatera_utara">Sumatera Utara</option>
+              <option value="sumatera_barat">Sumatera Barat</option>
+              <option value="riau">Riau</option>
+              <option value="kepulauan_riau">Kepulauan Riau</option>
+              <option value="jambi">Jambi</option>
+              <option value="bengkulu">Bengkulu</option>
+              <option value="sumatera_selatan">Sumatera Selatan</option>
+              <option value="bangka_belitung">Bangka Belitung</option>
+              <option value="lampung">Lampung</option>
+              <option value="banten">Banten</option>
+              <option value="jakarta">DKI Jakarta</option>
+              <option value="jawa_barat">Jawa Barat</option>
+              <option value="jawa_tengah">Jawa Tengah</option>
+              <option value="yogyakarta">DI Yogyakarta</option>
+              <option value="jawa_timur">Jawa Timur</option>
+              <option value="bali">Bali</option>
+              <option value="nusa_tenggara_barat">Nusa Tenggara Barat</option>
+              <option value="nusa_tenggara_timur">Nusa Tenggara Timur</option>
+              <option value="kalimantan_barat">Kalimantan Barat</option>
+              <option value="kalimantan_tengah">Kalimantan Tengah</option>
+              <option value="kalimantan_selatan">Kalimantan Selatan</option>
+              <option value="kalimantan_timur">Kalimantan Timur</option>
+              <option value="kalimantan_utara">Kalimantan Utara</option>
+              <option value="sulawesi_utara">Sulawesi Utara</option>
+              <option value="sulawesi_tengah">Sulawesi Tengah</option>
+              <option value="sulawesi_selatan">Sulawesi Selatan</option>
+              <option value="sulawesi_tenggara">Sulawesi Tenggara</option>
+              <option value="gorontalo">Gorontalo</option>
+              <option value="sulawesi_barat">Sulawesi Barat</option>
+              <option value="maluku">Maluku</option>
+              <option value="maluku_utara">Maluku Utara</option>
+              <option value="papua">Papua</option>
+              <option value="papua_barat">Papua Barat</option>
+              <option value="papua_selatan">Papua Selatan</option>
+              <option value="papua_tengah">Papua Tengah</option>
+              <option value="papua_pegunungan">Papua Pegunungan</option>
+              <option value="papua_barat_daya">Papua Barat Daya</option>
+            </select>
+          </div>
+        </div>
+
+        <ul class="text-sm font-semibold space-y-3">
+          <li><a href="#home" class="block nav-link">Home</a></li>
+          <li><a href="#about" class="block nav-link">About</a></li>
+          <li>
+            <span class="block">Travel</span>
+            <ul class="ml-4 mt-1 space-y-1 text-sm">
+              <li>
+                <a href="kuliner.html" class="flex items-center nav-link"><span class="mr-1">></span> Kuliner Nusantara</a>
+              </li>
+              <li>
+                <a href="tarian.html" class="flex items-center nav-link"><span class="mr-1">></span> Tarian Daerah</a>
+              </li>
+              <li>
+                <a href="alat-musik.html" class="flex items-center nav-link"><span class="mr-1">></span> Alat Musik</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#contact" class="block nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <br />
+    <div class="max-w-4xl mx-auto py-8 px-4">
+      <br />
+      <h1 class="text-5xl text-yellow-400 mb-6 text-center">Tarian Nusantara</h1>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/kecak.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Kecak</h2>
+          <p class="text-blue-600">Bali, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Kecak adalah salah satu tarian paling terkenal dari Bali yang menceritakan kisah Ramayana, di mana para penari yang duduk melingkar akan bersuara "cak" sebagai bagian dari iringan musik. Tarian ini biasanya melibatkan
+            banyak penari laki-laki yang mengenakan kain kotak-kotak dan menampilkan gerakan yang dinamis. Daya tarik utama dari Tari Kecak adalah kolaborasi antara gerakan tari dan vokal yang menciptakan suasana yang dramatis. Tarian ini
+            sering ditampilkan di berbagai acara budaya dan pariwisata, menjadi simbol identitas budaya Bali.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/campak.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Campak</h2>
+          <p class="text-blue-600">Bangka Belitung, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Campak adalah tarian yang menggambarkan kebahagiaan bujang dan dayang di Kepulauan Bangka Belitung. Tarian ini biasanya ditarikan setelah panen padi sebagai bentuk hiburan dan ungkapan syukur atas hasil pertanian. Tari
+            Campak memiliki gerakan yang ceria dan dinamis, mencerminkan semangat masyarakat yang merayakan keberhasilan. Tarian ini juga sering ditampilkan dalam festival dan acara budaya, menjadi bagian penting dari warisan budaya Bangka
+            Belitung.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/cokek.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Cokek</h2>
+          <p class="text-blue-600">Banten, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Cokek adalah tarian tradisional yang berasal dari Banten, yang menggambarkan kehidupan masyarakat setempat dengan perpaduan antara nilai kebudayaan Betawi dan para keturunan Tionghoa. Tarian ini sering dipertunjukkan pada
+            acara pernikahan, selamatan keluarga, maupun acara hiburan lainnya. Tari Cokek memiliki gerakan yang ceria dan penuh warna, serta diiringi oleh musik yang menggugah semangat. Tarian ini tidak hanya berfungsi sebagai hiburan,
+            tetapi juga mencerminkan keragaman budaya dan toleransi antar etnis di Banten. Dengan kostum yang berwarna-warni dan gerakan yang energik, Tari Cokek menjadi simbol identitas budaya Banten yang kaya dan beragam.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/ganau.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari ganau</h2>
+          <p class="text-blue-600">Bengkulu, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Ganau adalah tarian tradisional yang berasal dari Bengkulu, biasanya dibawakan oleh sekelompok laki-laki dan perempuan. Dikutip dari buku "Ensiklopedi Seni Tari Nusantara" oleh R. Toto Sugiarto dkk, gerakan tarian ini
+            dimulai dengan pelan dan diakhiri dengan gerakan yang cepat dan menghentak. Ciri khas dari Tari Ganau adalah harmonisasi antara lompatan para penari serta gerakan tangan yang menyesuaikan dengan iringan musik. Tarian ini sering
+            ditampilkan dalam berbagai acara adat dan perayaan, mencerminkan semangat kebersamaan dan kegembiraan masyarakat Bengkulu.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/topengbetawi.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Topeng Betawi</h2>
+          <p class="text-blue-600">DKI Jakarta, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Topeng Betawi adalah salah satu tarian tradisional yang berasal dari DKI Jakarta. Mengutip dari laman jakarta.go.id, tari ini merupakan bagian dari pentas lakon Topeng Betawi, di mana penari mengenakan topeng yang
+            menggambarkan berbagai karakter. Tarian ini biasanya ditampilkan dalam acara-acara budaya, pernikahan, dan perayaan lainnya. Tari Topeng Betawi memiliki gerakan yang dinamis dan ekspresif, mencerminkan kehidupan masyarakat
+            Betawi serta nilai-nilai budaya yang kaya. Selain itu, tari ini juga berfungsi sebagai sarana untuk menyampaikan cerita dan pesan moral kepada penonton.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/dana.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Dana Dana</h2>
+          <p class="text-blue-600">Gorontalo, Indonesia</p>
+          <p class="text-gray-600 mt-2">Tari Dana Dana adalah tarian tradisional yang sering ditampilkan dalam acara sambutan atau perayaan hari-hari besar di Gorontalo. Tarian ini melambangkan ungkapan rasa</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/sekapursirih.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Sekapur Sirih</h2>
+          <p class="text-blue-600">Jambi, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Sekapur Sirih adalah tarian yang digunakan untuk menyambut tamu-tamu besar di Jambi. Mengutip jurnal oleh Troy Alifanus Naka Dama & Rully Rochayati, gerakan tarian ini terinspirasi dari kebiasaan gadis Jambi yang sedang
+            berdandan. Tarian ini menggambarkan keramahan dan penghormatan masyarakat Jambi terhadap tamu, serta melambangkan keindahan dan keanggunan budaya lokal. Tari Sekapur Sirih sering ditampilkan dalam acara resmi dan perayaan,
+            menjadi simbol identitas budaya Jambi.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/jaipong.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Jaipong</h2>
+          <p class="text-blue-600">Jawa Barat, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Jaipong adalah tarian yang berasal dari Bandung, Jawa Barat. Tarian ini merupakan gabungan dari gerakan Tari Ketuk Tilu, Tari Ronggeng, dan beberapa gerakan pencak silat. Tari Jaipong dikenal dengan gerakan yang dinamis dan
+            ekspresif, mencerminkan semangat dan kebebasan. Tarian ini sering ditampilkan dalam berbagai acara, baik formal maupun informal, dan menjadi salah satu simbol budaya Jawa Barat yang kaya.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/bedhaya.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Bedhaya</h2>
+          <p class="text-blue-600">Jawa Tengah, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Bedhaya Ketawang adalah tarian yang berasal dari Keraton Surakarta, Jawa Tengah. Dikutip dari laman surakarta.go.id, tarian ini hanya ditampilkan saat penobatan dan peringatan naiknya takhta raja di Keraton Kasunanan
+            Surakarta. Tarian ini membawakan cerita mengenai Panembahan Senopati dengan Kanjeng Ratu Kidul. Tari Bedhaya Ketawang memiliki gerakan yang anggun dan penuh makna, mencerminkan nilai-nilai spiritual dan budaya yang mendalam.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/reogponorogo.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Reog Ponorogo</h2>
+          <p class="text-blue-600">Jawa Timur, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Reog Ponorogo adalah tarian tradisional yang berasal dari Jawa Timur, di mana penarinya menggunakan topeng besar menyerupai harimau yang dihias dengan bulu ekor merak. Mengutip dari laman disbudparpora.ponorogo.go.id, Reog
+            Ponorogo sering membawakan kisah legenda Suryongalam (Ki Ageng Kutu) dan legenda Bantarangin. Tarian ini melibatkan gerakan yang energik dan dramatis, serta diiringi oleh musik gamelan. Reog Ponorogo sering ditampilkan dalam
+            festival dan acara budaya, menjadi simbol identitas masyarakat Ponorogo.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/monong.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Monong</h2>
+          <p class="text-blue-600">Kalimantan Barat, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Monong adalah tarian tradisional yang berasal dari Kalimantan Barat, yang ditujukan untuk menolak penyakit dan malapetaka. Mengutip buku "Ayo Mengenal Indonesia: Kalimantan 1" oleh N. Arie Any, saat ini Tari Monong telah
+            bertransformasi menjadi hiburan bagi masyarakat secara umum. Tarian ini biasanya ditampilkan dalam acara-acara adat dan perayaan, mencerminkan kepercayaan masyarakat terhadap kekuatan spiritual dan harapan akan kesehatan dan
+            keselamatan.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/begandut.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Begandut</h2>
+          <p class="text-blue-600">Kalimantan Selatan, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Begandut adalah tarian yang berasal dari Kalimantan Selatan dan awalnya merupakan kesenian keraton. Namun, seiring perkembangan zaman, tarian ini telah menjadi hiburan bagi rakyat, terutama bagi petani. Mengutip buku
+            "Mengenal Kesenian Nasional 9: Mamanda" oleh Kusnanto, ciri khas dari Tari Gandut adalah penarinya yang harus memiliki paras cantik dan pandai menari, serta memiliki ilmu bela diri dan mantra tertentu. Tarian ini sering
+            ditampilkan dalam acara-acara adat dan perayaan, melambangkan keindahan dan kekuatan budaya Kalimantan Selatan.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/giringgiring.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Giring-Giring</h2>
+          <p class="text-blue-600">Kalimantan Tengah, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Giring-Giring adalah tarian yang berasal dari Kalimantan Tengah dan menunjukkan kebahagiaa, tarian ini biasanya ditampilkan untuk menyambut tamu-tamu besar. Giring-giring dalam tarian ini dibuat dengan bambu tipis yang
+            diisi dengan biji, menghasilkan suara yang sejalan dengan alunan gamelan. Tarian ini mencerminkan semangat kebersamaan dan kegembiraan masyarakat Kalimantan Tengah dalam merayakan momen-momen penting.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/hudoq.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Hudoq</h2>
+          <p class="text-blue-600">Kalimantan Timur, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Hudoq adalah tarian yang memiliki tujuan untuk meminta permohonan kepada Tuhan agar terhindar dari gangguan hama yang dapat merusak tanaman. Tarian ini juga diharapkan dapat menghasilkan panen yang subur dan melimpah.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/lalatip.png" />
+        <div>
+          <h2 class="text-lg font-semibold">tari lalatip</h2>
+          <p class="text-blue-600">Kalimantan Utara, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Lalatip adalah tarian tradisional yang berasal dari suku Dayak Tahol di Kalimantan Utara. Mengutip dari warisanbudaya.kemdikbud.go.id, tarian ini awalnya bertujuan untuk melatih ketangkasan kaki dalam melompat dan
+            menghindari rintangan. Tari Lalatip sering ditampilkan dalam acara adat dan perayaan, mencerminkan kekayaan budaya dan tradisi masyarakat Dayak. Gerakan yang energik dan penuh semangat dalam tarian ini menggambarkan kearifan
+            lokal dan hubungan masyarakat dengan alam.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/malemang.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Malemang</h2>
+          <p class="text-blue-600">Kepulauan Riau, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Malemang adalah tarian tradisional dari Kepulauan Riau yang awalnya ditujukan untuk menghibur raja. Seiring waktu, tarian ini telah bertransformasi menjadi hiburan yang sering ditampilkan dalam upacara pernikahan dan
+            acara-acara lainnya. Daya tarik dari Tari Malemang terletak pada gerakan membungkukkan badan ke belakang, di mana penari berusaha mengambil sapu tangan yang diletakkan di lantai. Tarian ini tidak hanya menghibur, tetapi juga
+            mencerminkan nilai-nilai budaya dan tradisi masyarakat Kepulauan Riau.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/cangget.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Cangget</h2>
+          <p class="text-blue-600">Lampung, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Cangget adalah tarian tradisional Lampung yang biasanya ditampilkan dalam acara adat, seperti upacara pernikahan atau penyambutan tamu. Gerakan tarian ini anggun dan dilakukan secara berkelompok, melambangkan kebersamaan
+            dan keramahan masyarakat Lampung.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/lenso.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Lenso</h2>
+          <p class="text-blue-600">Maluku, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Lenso adalah tarian pergaulan khas Maluku yang dilakukan dalam berbagai acara adat dan perayaan. Penari menggunakan sapu tangan sebagai properti utama dan menampilkan gerakan yang ceria serta penuh semangat.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/cakalele.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Cakalele</h2>
+          <p class="text-blue-600">Maluku Utara, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Cakalele adalah tarian perang dari Maluku Utara yang melambangkan keberanian para prajurit. Penari mengenakan pakaian perang tradisional dan membawa parang serta tameng, menampilkan gerakan yang gagah dan penuh semangat.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/saman.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Saman</h2>
+          <p class="text-blue-600">Nanggroe Aceh Darussalam, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Saman adalah salah satu tarian tradisional yang berasal dari Aceh, Indonesia. Tarian ini biasanya dilakukan oleh sekelompok penari pria dan wanita yang duduk berjejer dalam formasi. Tari Saman dikenal dengan gerakan yang
+            dinamis dan cepat, diiringi oleh nyanyian yang penuh semangat. Tari ini menceritakan tentang kebersamaan, persatuan, dan rasa syukur kepada Tuhan. Gerakan tari ini melibatkan tepukan tangan, goyangan tubuh, dan gerakan kepala
+            yang serentak, menciptakan harmoni yang indah. Tari Saman sering ditampilkan dalam berbagai acara, seperti perayaan hari besar, festival budaya, dan acara resmi lainnya. Tari ini juga telah diakui oleh UNESCO sebagai Warisan
+            Budaya Takbenda Manusia, yang menunjukkan pentingnya nilai-nilai budaya dan tradisi yang terkandung di dalamnya.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/kataga.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Kataga</h2>
+          <p class="text-blue-600">Nusa Tenggara Timur, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Kataga adalah tarian perang khas Sumba, Nusa Tenggara Timur, yang menggambarkan keberanian dan kekuatan para prajurit. Para penari mengenakan pakaian perang tradisional dan menampilkan gerakan dinamis yang menunjukkan
+            semangat juang.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/mpalenggo.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Mpaa Lenggo</h2>
+          <p class="text-blue-600">Nusa Tenggara Barat, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Mpaa Lenggo adalah tarian tradisional NTB yang biasa ditampilkan dalam upacara adat dan penyambutan tamu. Gerakannya lemah gemulai dan dilakukan oleh penari wanita dengan iringan musik tradisional seperti gong dan gendang.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/yospan.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari yospan</h2>
+          <p class="text-blue-600">Papua, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Yospan adalah tarian pergaulan khas Papua yang menggabungkan gerakan dari dua tarian rakyat, yaitu Yosim dan Pancar. Tarian ini energik dan penuh semangat, sering ditampilkan sebagai simbol persahabatan dan kebersamaan.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/suanggi.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Suanggi</h2>
+          <p class="text-blue-600">Papua Barat, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Suanggi adalah tarian khas Papua Barat yang memiliki nuansa magis, menceritakan kisah seorang istri yang meninggal dan menjadi roh gentayangan (suanggi). Tarian ini sering digunakan dalam upacara adat sebagai ritual
+            penyembuhan dan pengusiran roh jahat.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/aluyen.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Aluyen</h2>
+          <p class="text-blue-600">Papua Barat daya, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Aluyen adalah tarian khas Papua Barat Daya yang memiliki makna spiritual dan sering digunakan dalam upacara adat serta ritual keagamaan. Gerakannya menggambarkan hubungan manusia dengan alam dan leluhur.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/dekpukmbui.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Det Pok Mbui</h2>
+          <p class="text-blue-600">Papua Pegunungan, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Det Pok Mbui adalah tarian tradisional Papua Pegunungan yang dipersembahkan untuk menghormati leluhur. Tarian ini menampilkan gerakan yang menggambarkan kehidupan sehari-hari masyarakat setempat dan diiringi oleh musik
+            tradisional.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/awaijale.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Awaijale Rilejale</h2>
+          <p class="text-blue-600">Papua Selatan, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Awaijale Rilejale adalah tarian khas Papua Selatan yang menggambarkan kehidupan masyarakat pesisir dan hubungan mereka dengan laut. Gerakannya menirukan aktivitas nelayan dan sering ditampilkan dalam acara adat sebagai
+            bentuk penghormatan kepada alam.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/seka.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Seka</h2>
+          <p class="text-blue-600">Papua Tengah, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Seka dilakukan sebagai bentuk rasa syukur kepada Yang Maha Kuasa atas hasil alam dan penen yang melimpah ruah. Latar belakang inilah yang membuat gerakan tariannya sangat energik, penuh semangat dan penuh kebahagiaan.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/zapin.png" />
+        <div>
+          <h2 class="text-lg font-semibold">tari Zapin</h2>
+          <p class="text-blue-600">Riau, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Zapin adalah tarian khas Riau yang berasal dari budaya Melayu. Tarian ini memiliki gerakan lemah gemulai dan ritmis, awalnya ditampilkan oleh pria dalam acara keagamaan, tetapi kini juga dibawakan oleh wanita dalam berbagai
+            acara adat dan budaya.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/bamba.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Bamba Manurung</h2>
+          <p class="text-blue-600">Sulawesi Barat, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Bamba Manurung adalah tarian tradisional yang berasal dari Sulawesi Barat, Indonesia. Tarian ini biasanya ditampilkan untuk menyambut tamu kehormatan dalam acara-acara resmi, seperti pernikahan, festival, dan upacara adat.
+            Tari Bamba Manurung melibatkan sekelompok penari yang mengenakan pakaian adat yang indah dan menggunakan kipas sebagai properti utama. Gerakan tari ini anggun dan penuh makna, mencerminkan keramahan dan budaya masyarakat
+            Sulawesi Barat. Tari ini juga menggambarkan nilai-nilai sosial, seperti persatuan dan kebersamaan, serta menunjukkan rasa syukur kepada tamu yang datang. Melalui gerakan yang lembut dan iringan musik tradisional, Tari Bamba
+            Manurung menciptakan suasana yang hangat dan penuh keakraban.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/kipaspakarena.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Kipas Pakarena</h2>
+          <p class="text-blue-600">Sulawesi Selatan, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Kipas Pakarena adalah tarian tradisional dari Sulawesi Selatan yang menggunakan kipas sebagai properti utama. Tarian ini berasal dari Gowa dan sering ditampilkan dalam acara adat, hiburan, dan kesenian.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/deru.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Dero</h2>
+          <p class="text-blue-600">Sulawesi Tengah, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Dero adalah tarian pergaulan dari Sulawesi Tengah yang ditampilkan dalam lingkaran besar. Para penari pria dan wanita berpegangan tangan sambil mengikuti irama gendang dan gong, melambangkan kebersamaan serta persatuan
+            masyarakat.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/dinggu.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Dinggu</h2>
+          <p class="text-blue-600">Sulawesi Tenggara, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Dinggu adalah tarian khas Sulawesi Tenggara yang menggambarkan semangat gotong royong dalam menumbuk padi. Properti utama dalam tarian ini adalah alu dan lesung, dengan gerakan energik yang mencerminkan kerja sama
+            masyarakat dalam kehidupan sehari-hari.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/kabasaran.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Kabasaran</h2>
+          <p class="text-blue-600">Sulawesi Utara, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Kabasaran adalah tarian perang dari Sulawesi Utara yang dulunya dilakukan oleh prajurit Minahasa sebelum berperang. Para penari mengenakan pakaian merah dan membawa senjata seperti pedang atau tombak, menampilkan gerakan
+            yang gagah berani.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/piring.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Piring</h2>
+          <p class="text-blue-600">Sumatera Barat, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Piring adalah tarian tradisional dari Sumatra Barat yang menggunakan piring sebagai properti utama. Para penari menampilkan gerakan cepat dan dinamis sambil membawa piring di kedua tangan, menciptakan atraksi yang memukau
+            dan melambangkan rasa syukur atas hasil panen.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/tanggai.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Tanggai</h2>
+          <p class="text-blue-600">Sumatera Selatan, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Tanggai adalah tarian penyambutan khas Sumatra Selatan yang sering ditampilkan dalam acara pernikahan atau penyambutan tamu. Penari mengenakan pakaian adat yang anggun dan menampilkan gerakan lemah gemulai sebagai bentuk
+            penghormatan kepada tamu yang datang.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/tortor.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Tor-Tor</h2>
+          <p class="text-blue-600">Sumatera Utara, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Tor-Tor adalah tarian adat suku Batak di Sumatra Utara yang memiliki gerakan khas berupa hentakan kaki dan gerakan tangan yang mengikuti irama musik gondang. Tarian ini sering ditampilkan dalam acara adat sebagai ungkapan
+            syukur dan doa kepada leluhur.
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-4 mb-4 flex">
+        <img alt="Tari" class="w-48 h-48 rounded-md mr-4" src="Assets/tari/serimpi.png" />
+        <div>
+          <h2 class="text-lg font-semibold">Tari Serimpi</h2>
+          <p class="text-blue-600">DI Yogyakarta, Indonesia</p>
+          <p class="text-gray-600 mt-2">
+            Tari Serimpi adalah tarian klasik Yogyakarta yang dianggap sakral dan biasanya ditampilkan di lingkungan keraton. Gerakan dalam tarian ini anggun dan penuh kelembutan, melambangkan kesopanan serta keanggunan budaya Jawa.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-[#b25a26] text-white py-10 px-6 md:px-20">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:justify-between gap-10 md:gap-0">
+        <div class="md:w-1/3">
+          <h1 class="text-2xl text-yellow-400 style=width: 180px">Visit Nusantara</h1>
+          <p class="text-sm leading-relaxed mb-5 text-justify">
+            Visit Nusantara merupakan platform pariwisata budaya berbasis web yang menghadirkan peta interaktif dan informasi destinasi budaya dari seluruh Indonesia. Kami berkomitmen untuk memperkenalkan dan melestarikan kekayaan budaya
+            nusantara kepada masyarakat luas.
+          </p>
+        </div>
+        <div class="md:w-1/3 flex flex-col md:flex-row md:justify-between gap-8">
+          <div>
+            <h1 class="text-2xl text-yellow-400 style=width: 180px">Jelajahi</h1>
+            <ul class="text-sm list-disc list-inside space-y-1">
+              <li>Peta Pariwisata</li>
+              <li>Tarian Daerah</li>
+              <li>Alat Musik</li>
+              <li>Cerita Tradisi</li>
+              <li>Kuliner Khas</li>
+            </ul>
+          </div>
+          <div>
+            <h1 class="text-2xl text-yellow-400 style=width: 180px">Hubungi Kami</h1>
+            <p class="text-sm leading-relaxed">
+              Butuh bantuan atau ingin bekerja sama?<br />
+              Email: kontak@rasanusantara.id<br />
+              Lokasi: Jakarta, Indonesia
+            </p>
+          </div>
+        </div>
+        <div class="md:w-1/3">
+          <h1 class="text-2xl text-yellow-400 style=width: 180px">Informasi</h1>
+          <ul class="text-sm list-disc list-inside space-y-1 mb-4">
+            <li>Kebijakan Privasi</li>
+            <li>Syarat dan Ketentuan</li>
+            <li>Hak Cipta © 2025 Rasa Nusantara</li>
+          </ul>
+          <div class="flex space-x-5 text-white text-xl">
+            <a href="#" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navLinks = document.querySelectorAll(".nav-link");
+      const sections = document.querySelectorAll("section");
+      const navbar = document.getElementById("navbar");
+      const navToggle = document.getElementById("nav-toggle");
+      const navMenu = document.getElementById("nav-menu");
+      const closeNav = document.getElementById("close-nav");
+
+      function changeNavOnScroll() {
+        let scrollPos = window.scrollY + 100;
+
+        sections.forEach((section) => {
+          let top = section.offsetTop;
+          let height = section.offsetHeight;
+          let id = section.getAttribute("id");
+
+          if (scrollPos >= top && scrollPos < top + height) {
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+
+        if (window.scrollY > 50) {
+          navbar.classList.add("nav-scrolled");
+        } else {
+          navbar.classList.remove("nav-scrolled");
+        }
+      }
+
+      navToggle.addEventListener("click", () => {
+        navMenu.classList.remove("hidden");
+      });
+
+      closeNav.addEventListener("click", () => {
+        navMenu.classList.add("hidden");
+      });
+
+      window.addEventListener("scroll", changeNavOnScroll);
+    });
+
+    function goToProvince() {
+      var select = document.getElementById("province-select");
+      var province = select.value;
+      if (province) {
+        window.location.href = "/" + province;
+      } else {
+        alert("Silakan pilih provinsi terlebih dahulu!");
+      }
+    }
+
+    function filterProvince() {
+      var input = document.getElementById("search-input");
+      var filter = input.value.toLowerCase();
+      var select = document.getElementById("province-select");
+      var options = select.options;
+
+      for (var i = 0; i < options.length; i++) {
+        var text = options[i].text.toLowerCase();
+        if (text.includes(filter) || options[i].value.includes(filter)) {
+          options[i].style.display = "";
+        } else {
+          options[i].style.display = "none";
+        }
+      }
+    }
+    function redirectToProvinsi() {
+      const provinsi = document.getElementById("provinsi").value;
+      if (provinsi) {
+        window.location.href = `provinsi/${provinsi}.html`; // Tambahin "/" di depan
+      }
+    }
+  </script>
+</html>

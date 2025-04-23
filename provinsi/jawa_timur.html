@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pariwisata dan Budaya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/yourkitcode.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Inter:wght@400;600&family=Inknut+Antiqua:wght@400;700&family=Instrument+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: "Instrument Sans", sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .nav-link.active {
+        border: 2px solid white;
+        border-radius: 9999px;
+        padding: 0.25rem 0.5rem;
+      }
+
+      .nav-scrolled {
+        background-color: rgba(181, 89, 42, 0.9);
+        transition: background-color 0.3s ease-in-out;
+      }
+      h1 {
+        font-family: "Jolly Lodger";
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-sans m-0">
+    <header id="navbar" class="bg-[#B5592A] text-white px-6 py-2 flex items-center justify-between fixed top-0 left-0 w-full z-50 transition duration-300" style="font-family: 'Jolly Lodger', cursive">
+      <h1 class="text-4xl text-yellow-400" style="width: 180px">Visit Nusantara</h1>
+
+      <div class="flex items-center space-x-3">
+        <!-- Tombol Login -->
+        <a href="loginpage.html" class="bg-yellow-300 text-white text-5x1 px-5 py-2 rounded shadow-md hover:bg-yellow-400 transition" type="button">Login</a>
+
+        <!-- Tombol Menu Burger -->
+        <button id="nav-toggle" class="block focus:outline-none" aria-label="Toggle Menu">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <nav id="nav-menu" class="fixed top-0 right-0 bg-[#B5592A] text-white rounded-l-2xl z-50 hidden" style="font-family: 'Inter', sans-serif">
+      <div class="p-4">
+        <div class="flex justify-end">
+          <button id="close-nav" aria-label="Tutup Menu" class="text-2xl font-bold">&times;</button>
+        </div>
+
+        <div class="mt-4 mb-6">
+          <div class="flex gap-2">
+            <div class="relative w-1/2">
+              <input type="text" placeholder="Search" class="w-full px-3 py-1 text-sm text-gray-700 rounded shadow pr-8 focus:outline-none" />
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 absolute right-2 top-1/2 transform -translate-y-1/2 text-[#B5592A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103 10.5a7.5 7.5 0 0013.15 6.15z" />
+              </svg>
+            </div>
+            <select name="provinsi" id="provinsi" class="w-1/2 text-sm bg-white text-gray-700 px-2 py-1 rounded shadow" onchange="redirectToProvinsi()">
+              <option value="">Pilih Provinsi</option>
+              <option value="aceh">Nanggroe Aceh Darussalam</option>
+              <option value="sumatera_utara">Sumatera Utara</option>
+              <option value="sumatera_barat">Sumatera Barat</option>
+              <option value="riau">Riau</option>
+              <option value="kepulauan_riau">Kepulauan Riau</option>
+              <option value="jambi">Jambi</option>
+              <option value="bengkulu">Bengkulu</option>
+              <option value="sumatera_selatan">Sumatera Selatan</option>
+              <option value="bangka_belitung">Bangka Belitung</option>
+              <option value="lampung">Lampung</option>
+              <option value="banten">Banten</option>
+              <option value="jakarta">DKI Jakarta</option>
+              <option value="jawa_barat">Jawa Barat</option>
+              <option value="jawa_tengah">Jawa Tengah</option>
+              <option value="yogyakarta">DI Yogyakarta</option>
+              <option value="jawa_timur">Jawa Timur</option>
+              <option value="bali">Bali</option>
+              <option value="nusa_tenggara_barat">Nusa Tenggara Barat</option>
+              <option value="nusa_tenggara_timur">Nusa Tenggara Timur</option>
+              <option value="kalimantan_barat">Kalimantan Barat</option>
+              <option value="kalimantan_tengah">Kalimantan Tengah</option>
+              <option value="kalimantan_selatan">Kalimantan Selatan</option>
+              <option value="kalimantan_timur">Kalimantan Timur</option>
+              <option value="kalimantan_utara">Kalimantan Utara</option>
+              <option value="sulawesi_utara">Sulawesi Utara</option>
+              <option value="sulawesi_tengah">Sulawesi Tengah</option>
+              <option value="sulawesi_selatan">Sulawesi Selatan</option>
+              <option value="sulawesi_tenggara">Sulawesi Tenggara</option>
+              <option value="gorontalo">Gorontalo</option>
+              <option value="sulawesi_barat">Sulawesi Barat</option>
+              <option value="maluku">Maluku</option>
+              <option value="maluku_utara">Maluku Utara</option>
+              <option value="papua">Papua</option>
+              <option value="papua_barat">Papua Barat</option>
+              <option value="papua_selatan">Papua Selatan</option>
+              <option value="papua_tengah">Papua Tengah</option>
+              <option value="papua_pegunungan">Papua Pegunungan</option>
+              <option value="papua_barat_daya">Papua Barat Daya</option>
+            </select>
+          </div>
+        </div>
+
+        <ul class="text-sm font-semibold space-y-3">
+          <li><a href="#home" class="block nav-link">Home</a></li>
+          <li><a href="#about" class="block nav-link">About</a></li>
+          <li>
+            <span class="block">Travel</span>
+            <ul class="ml-4 mt-1 space-y-1 text-sm">
+              <li>
+                <a href="kuliner.html" class="flex items-center nav-link"><span class="mr-1">></span> Kuliner Nusantara</a>
+              </li>
+              <li>
+                <a href="tarian.html" class="flex items-center nav-link"><span class="mr-1">></span> Tarian Daerah</a>
+              </li>
+              <li>
+                <a href="alat-musik.html" class="flex items-center nav-link"><span class="mr-1">></span> Alat Musik</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#contact" class="block nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section
+      id="home"
+      class="relative text-white text-left p-10 flex items-center"
+      style="background-image: url('../Assets/gunung.jpeg'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 50vh; width: 100%"
+    >
+      <div class="max-w-lg mt-8">
+        <h1 class="text-2xl font-bold" style="font-family: 'Inknut Antiqua', serif">PARIWISATA DAN BUDAYA<br /><span class="text-lg">BANGSA</span></h1>
+        <p class="text-sm mt-2">Temukan warna, cerita, dan rasa dari setiap sudut Indonesia. Rasa Nusantara mengajak Anda menjelajahi kekayaan budaya lewat pengalaman digital yang informatif dan menyenangkan.</p>
+        <button class="mt-6 px-3 py-1 border-2 border-transparent text-white bg-[#B5592A] bg-opacity-80 rounded-full font-semibold shadow-md hover:bg-opacity-100 transition duration-300">Mulai</button>
+      </div>
+    </section>
+
+    <section id="about" class="p-6 bg-white text-gray-700">
+      <h2 class="text-2xl font-bold" style="font-family: 'Inknut Antiqua', serif; color: black">INDONESIA</h2>
+      <p class="mt-2 text-sm text-[#4a2e0a] text-base leading-relaxed tracking-wide text-justify mb-12" style="font-family: 'Instrument Sans', sans-serif; color: black">
+        Indonesia, dengan nama resmi Republik Indonesia, adalah sebuah negara kepulauan di Asia Tenggara yang dilintasi garis khatulistiwa dan berada di antara daratan benua Asia dan Oseania sehingga dikenal sebagai negara lintas benua,
+        serta antara Samudra Pasifik dan Samudra Hindia. Indonesia merupakan negara terluas ke-14 sekaligus negara kepulauan terbesar di dunia dengan luas wilayah sebesar 1.904.569 km², serta negara dengan pulau terbanyak ke-6 di dunia,
+        dengan jumlah 17.504 pulau.Nama alternatif yang dipakai untuk kepulauan Indonesia disebut Nusantara. Selain itu, Indonesia juga menjadi negara berpenduduk terbanyak ke-4 di dunia dengan penduduk mencapai 275.344.166 jiwa pada tahun
+        2022. Indonesia adalah negara multiras, multietnis, dan multikultural di dunia, seperti halnya Amerika Serikat. Indonesia berbatasan dengan sejumlah negara di Asia Tenggara dan Oseania. Indonesia berbatasan di wilayah darat dengan
+        Malaysia di Pulau Kalimantan dan Sebatik, dengan Papua Nugini di Pulau Papua, dan dengan Timor Leste di Pulau Timor. Negara yang hanya berbatasan laut dengan Indonesia adalah Singapura, Filipina, Australia, Thailand, Vietnam, Palau,
+        dan wilayah persatuan Kepulauan Andaman dan Nikobar, India. Indonesia adalah negara kesatuan dengan bentuk pemerintahan republik berdasarkan konstitusi yang sah, yaitu Undang-Undang Dasar Negara Republik Indonesia Tahun 1945 (UUD
+        1945).
+      </p>
+    </section>
+    <section id="travel" class="relative bg-[#FF9D23]/60 overflow-hidden">
+      <!-- Konten utama -->
+      <div class="relative z-10 px-6 pt-20 pb-32 max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row gap-8 justify-center items-stretch">
+          <!-- Card 1 -->
+          <div class="bg-white bg-opacity-90 p-6 rounded-xl shadow-md w-full md:w-1/2 text-black flex flex-col">
+            <img src="Assets/reog.png" alt="Reog" class="rounded-lg w-full h-48 object-cover" />
+            <p class="mt-4 text-base font-medium">Penjelasan mengenai budaya, dan cerita rakyatnya.</p>
+            <p onclick="window.location.href='Cerita rakyat/crbali.html';" class="text-blue-500 text-sm mt-2 font-semibold text-right cursor-pointer">Read more</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white bg-opacity-90 p-6 rounded-xl shadow-md w-full md:w-1/2 text-black flex flex-col">
+            <img src="Assets/nganu.jpeg" alt="Rumah Besar" class="rounded-lg w-full h-48 object-cover" />
+            <p class="mt-4 text-base font-medium">Penjelasan mengenai lokasi, serta dekripsi wilayah provinsinya.</p>
+            <p onclick="window.location.href='keterangan/infobali.html';" class="text-blue-500 text-sm mt-2 font-semibold text-right cursor-pointer">Read more</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wave bawah -->
+      <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+        <svg class="relative block w-full h-20" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path
+            fill="#ffffff"
+            fill-opacity="1"
+            d="M0,160L60,144C120,128,240,96,360,106.7C480,117,600,171,720,192C840,213,960,203,1080,192C1200,181,1320,171,1380,165.3L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+          ></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Spacer setelah section -->
+    <div class="h-20"></div>
+
+    <div class="flex justify-center bg-white -mt-20 pb-16">
+      <div class="text-center">
+        <img src="Assets/bunder.png" alt="Top Pariwisata" class="w-40 md:w-48 lg:w-56 mx-auto" />
+        <h3 class="text-sm md:text-base font-bold mt-2 text-gray-700">WISATA TERKENAL</h3>
+        <div class="flex justify-center text-orange-400 text-sm">★★★★☆</div>
+        <button class="mt-2 px-4 py-1 border border-orange-500 text-orange-500 rounded-full text-sm font-semibold hover:bg-orange-100">Mulai</button>
+      </div>
+    </div>
+
+    <section id="contact" class="relative w-full h-screen">
+      <!-- Gambar Latar -->
+      <img src="../Assets/lb-contact.jpeg" alt="Background Image" class="absolute inset-0 w-full h-full object-cover opacity-30 brightness-55" />
+
+      <!-- Form di atas gambar -->
+      <div class="relative flex items-center justify-center h-full px-4">
+        <div class="bg-white bg-opacity-80 backdrop-blur-md p-8 rounded-2xl shadow-lg max-w-2xl w-full">
+          <h2 class="text-3xl font-bold text-center mb-6">Contact</h2>
+          <form action="#" method="POST" class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-medium mb-1">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your Name" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#B35A29]" />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium mb-1">Email</label>
+              <input type="email" id="email" name="email" placeholder="Your Email" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#B35A29]" />
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium mb-1">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Your Message"
+                class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-[#B35A29]"
+              ></textarea>
+            </div>
+            <button type="submit" class="w-full bg-[#B35A29] text-white text-sm font-semibold rounded-lg py-3 hover:bg-[#9a4a20] transition-colors">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-[#b25a26] text-white py-10 px-6 md:px-20">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:justify-between gap-10 md:gap-0">
+        <div class="md:w-1/3">
+          <h1 class="text-2xl text-yellow-400 style=width: 180px">Visit Nusantara</h1>
+          <p class="text-sm leading-relaxed mb-5 text-justify">
+            Visit Nusantara merupakan platform pariwisata budaya berbasis web yang menghadirkan peta interaktif dan informasi destinasi budaya dari seluruh Indonesia. Kami berkomitmen untuk memperkenalkan dan melestarikan kekayaan budaya
+            nusantara kepada masyarakat luas.
+          </p>
+        </div>
+        <div class="md:w-1/3 flex flex-col md:flex-row md:justify-between gap-8">
+          <div>
+            <h1 class="text-2xl text-yellow-400 style=width: 180px">Jelajahi</h1>
+            <ul class="text-sm list-disc list-inside space-y-1">
+              <li>Peta Pariwisata</li>
+              <li>Tarian Daerah</li>
+              <li>Alat Musik</li>
+              <li>Cerita Tradisi</li>
+              <li>Kuliner Khas</li>
+            </ul>
+          </div>
+          <div>
+            <h1 class="text-2xl text-yellow-400 style=width: 180px">Hubungi Kami</h1>
+            <p class="text-sm leading-relaxed">
+              Butuh bantuan atau ingin bekerja sama?<br />
+              Email: kontak@rasanusantara.id<br />
+              Lokasi: Jakarta, Indonesia
+            </p>
+          </div>
+        </div>
+        <div class="md:w-1/3">
+          <h1 class="text-2xl text-yellow-400 style=width: 180px">Informasi</h1>
+          <ul class="text-sm list-disc list-inside space-y-1 mb-4">
+            <li>Kebijakan Privasi</li>
+            <li>Syarat dan Ketentuan</li>
+            <li>Hak Cipta © 2025 Rasa Nusantara</li>
+          </ul>
+          <div class="flex space-x-5 text-white text-xl">
+            <a href="#" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const sections = document.querySelectorAll("section");
+        const navbar = document.getElementById("navbar");
+        const navToggle = document.getElementById("nav-toggle");
+        const navMenu = document.getElementById("nav-menu");
+        const closeNav = document.getElementById("close-nav");
+
+        function changeNavOnScroll() {
+          let scrollPos = window.scrollY + 100;
+
+          sections.forEach((section) => {
+            let top = section.offsetTop;
+            let height = section.offsetHeight;
+            let id = section.getAttribute("id");
+
+            if (scrollPos >= top && scrollPos < top + height) {
+              navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${id}`) {
+                  link.classList.add("active");
+                }
+              });
+            }
+          });
+
+          if (window.scrollY > 50) {
+            navbar.classList.add("nav-scrolled");
+          } else {
+            navbar.classList.remove("nav-scrolled");
+          }
+        }
+
+        navToggle.addEventListener("click", () => {
+          navMenu.classList.remove("hidden");
+        });
+
+        closeNav.addEventListener("click", () => {
+          navMenu.classList.add("hidden");
+        });
+
+        window.addEventListener("scroll", changeNavOnScroll);
+      });
+
+      function goToProvince() {
+        var select = document.getElementById("province-select");
+        var province = select.value;
+        if (province) {
+          window.location.href = "/" + province;
+        } else {
+          alert("Silakan pilih provinsi terlebih dahulu!");
+        }
+      }
+
+      function filterProvince() {
+        var input = document.getElementById("search-input");
+        var filter = input.value.toLowerCase();
+        var select = document.getElementById("province-select");
+        var options = select.options;
+
+        for (var i = 0; i < options.length; i++) {
+          var text = options[i].text.toLowerCase();
+          if (text.includes(filter) || options[i].value.includes(filter)) {
+            options[i].style.display = "";
+          } else {
+            options[i].style.display = "none";
+          }
+        }
+      }
+      function redirectToProvinsi() {
+        const provinsi = document.getElementById("provinsi").value;
+        if (provinsi) {
+          window.location.href = `${provinsi}.html`; // Arahkan ke file HTML dalam folder 'provinsi'
+        }
+      }
+    </script>
+  </body>
+</html>

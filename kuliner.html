@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resep Kuliner Nusantara</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/yourkitcode.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Inter:wght@400;600&family=Inknut+Antiqua:wght@400;700&family=Instrument+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet" />
+
+    <style>
+      .hidden-content {
+        display: none;
+      }
+      body {
+        font-family: "Instrument Sans", sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .nav-link.active {
+        border: 2px solid white;
+        border-radius: 9999px;
+        padding: 0.25rem 0.5rem;
+      }
+
+      .nav-scrolled {
+        background-color: rgba(181, 89, 42, 0.9);
+        transition: background-color 0.3s ease-in-out;
+      }
+      h1 {
+        font-family: "Jolly Lodger";
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 text-gray-800 font-sans">
+    <header id="navbar" class="bg-[#B5592A] text-white px-6 py-2 flex items-center justify-between fixed top-0 left-0 w-full z-50 transition duration-300" style="font-family: 'Jolly Lodger', cursive">
+      <h1 class="text-4xl text-yellow-400" style="width: 180px">Visit Nusantara</h1>
+
+      <div class="flex items-center space-x-3">
+        <!-- Tombol Login -->
+        <a href="loginpage.html" class="bg-yellow-300 text-white text-5x1 px-5 py-2 rounded shadow-md hover:bg-yellow-400 transition" type="button">Login</a>
+
+        <!-- Tombol Menu Burger -->
+        <button id="nav-toggle" class="block focus:outline-none" aria-label="Toggle Menu">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <nav id="nav-menu" class="fixed top-0 right-0 bg-[#B5592A] text-white rounded-l-2xl z-50 hidden" style="font-family: 'Inter', sans-serif">
+      <div class="p-4">
+        <div class="flex justify-end">
+          <button id="close-nav" aria-label="Tutup Menu" class="text-2xl font-bold">&times;</button>
+        </div>
+
+        <div class="mt-4 mb-6">
+          <div class="flex gap-2">
+            <div class="relative w-1/2">
+              <input type="text" placeholder="Search" class="w-full px-3 py-1 text-sm text-gray-700 rounded shadow pr-8 focus:outline-none" />
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 absolute right-2 top-1/2 transform -translate-y-1/2 text-[#B5592A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103 10.5a7.5 7.5 0 0013.15 6.15z" />
+              </svg>
+            </div>
+            <select name="provinsi" id="provinsi" class="w-1/2 text-sm bg-white text-gray-700 px-2 py-1 rounded shadow" onchange="redirectToProvinsi()">
+              <option value="">Pilih Provinsi</option>
+              <option value="aceh">Nanggroe Aceh Darussalam</option>
+              <option value="sumatera_utara">Sumatera Utara</option>
+              <option value="sumatera_barat">Sumatera Barat</option>
+              <option value="riau">Riau</option>
+              <option value="kepulauan_riau">Kepulauan Riau</option>
+              <option value="jambi">Jambi</option>
+              <option value="bengkulu">Bengkulu</option>
+              <option value="sumatera_selatan">Sumatera Selatan</option>
+              <option value="bangka_belitung">Bangka Belitung</option>
+              <option value="lampung">Lampung</option>
+              <option value="banten">Banten</option>
+              <option value="jakarta">DKI Jakarta</option>
+              <option value="jawa_barat">Jawa Barat</option>
+              <option value="jawa_tengah">Jawa Tengah</option>
+              <option value="yogyakarta">DI Yogyakarta</option>
+              <option value="jawa_timur">Jawa Timur</option>
+              <option value="bali">Bali</option>
+              <option value="nusa_tenggara_barat">Nusa Tenggara Barat</option>
+              <option value="nusa_tenggara_timur">Nusa Tenggara Timur</option>
+              <option value="kalimantan_barat">Kalimantan Barat</option>
+              <option value="kalimantan_tengah">Kalimantan Tengah</option>
+              <option value="kalimantan_selatan">Kalimantan Selatan</option>
+              <option value="kalimantan_timur">Kalimantan Timur</option>
+              <option value="kalimantan_utara">Kalimantan Utara</option>
+              <option value="sulawesi_utara">Sulawesi Utara</option>
+              <option value="sulawesi_tengah">Sulawesi Tengah</option>
+              <option value="sulawesi_selatan">Sulawesi Selatan</option>
+              <option value="sulawesi_tenggara">Sulawesi Tenggara</option>
+              <option value="gorontalo">Gorontalo</option>
+              <option value="sulawesi_barat">Sulawesi Barat</option>
+              <option value="maluku">Maluku</option>
+              <option value="maluku_utara">Maluku Utara</option>
+              <option value="papua">Papua</option>
+              <option value="papua_barat">Papua Barat</option>
+              <option value="papua_selatan">Papua Selatan</option>
+              <option value="papua_tengah">Papua Tengah</option>
+              <option value="papua_pegunungan">Papua Pegunungan</option>
+              <option value="papua_barat_daya">Papua Barat Daya</option>
+            </select>
+          </div>
+        </div>
+
+        <ul class="text-sm font-semibold space-y-3">
+          <li><a href="#home" class="block nav-link">Home</a></li>
+          <li><a href="#about" class="block nav-link">About</a></li>
+          <li>
+            <span class="block">Travel</span>
+            <ul class="ml-4 mt-1 space-y-1 text-sm">
+              <li>
+                <a href="kuliner.html" class="flex items-center nav-link"><span class="mr-1">></span> Kuliner Nusantara</a>
+              </li>
+              <li>
+                <a href="tarian.html" class="flex items-center nav-link"><span class="mr-1">></span> Tarian Daerah</a>
+              </li>
+              <li>
+                <a href="alat-musik.html" class="flex items-center nav-link"><span class="mr-1">></span> Alat Musik</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#contact" class="block nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  <br>
+    <div class="max-w-4xl mx-auto py-8 px-4">
+      <br>
+      <br>
+      <h1  class="text-5xl text-yellow-400 mb-6 text-center">Resep Kuliner Nusantara</h1>
+      <div>
+        <label for="filter" class="block mb-2 font-medium">Filter Kategori:</label>
+        <select id="filter" onchange="filterResep()" class="mb-6 p-2 border rounded">
+          <option value="all">Semua</option>
+          <option value="pedas">Pedas</option>
+          <option value="manis">Manis</option>
+          <option value="gurih">Gurih</option>
+          <option value="unik">Unik</option>
+        </select>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Resep akan dimasukkan oleh JavaScript -->
+      </div>
+    </div>
+
+    <footer class="bg-[#b25a26] text-white py-10 px-6 md:px-20">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:justify-between gap-10 md:gap-0">
+        <div class="md:w-1/3">
+          <h1 class="text-2xl text-yellow-400 style=width: 180px">Visit Nusantara</h1>
+          <p class="text-sm leading-relaxed mb-5 text-justify">
+            Visit Nusantara merupakan platform pariwisata budaya berbasis web yang menghadirkan peta interaktif dan informasi destinasi budaya dari seluruh Indonesia. Kami berkomitmen untuk memperkenalkan dan melestarikan kekayaan budaya
+            nusantara kepada masyarakat luas.
+          </p>
+        </div>
+        <div class="md:w-1/3 flex flex-col md:flex-row md:justify-between gap-8">
+          <div>
+            <h1 class="text-2xl text-yellow-400 style=width: 180px">Jelajahi</h1>
+            <ul class="text-sm list-disc list-inside space-y-1">
+              <li>Peta Pariwisata</li>
+              <li>Tarian Daerah</li>
+              <li>Alat Musik</li>
+              <li>Cerita Tradisi</li>
+              <li>Kuliner Khas</li>
+            </ul>
+          </div>
+          <div>
+            <h1 class="text-2xl text-yellow-400 style=width: 180px">Hubungi Kami</h1>
+            <p class="text-sm leading-relaxed">
+              Butuh bantuan atau ingin bekerja sama?<br />
+              Email: kontak@rasanusantara.id<br />
+              Lokasi: Jakarta, Indonesia
+            </p>
+          </div>
+        </div>
+        <div class="md:w-1/3">
+          <h1 class="text-2xl text-yellow-400 style=width: 180px">Informasi</h1>
+          <ul class="text-sm list-disc list-inside space-y-1 mb-4">
+            <li>Kebijakan Privasi</li>
+            <li>Syarat dan Ketentuan</li>
+            <li>Hak Cipta © 2025 Rasa Nusantara</li>
+          </ul>
+          <div class="flex space-x-5 text-white text-xl">
+            <a href="#" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navLinks = document.querySelectorAll(".nav-link");
+      const sections = document.querySelectorAll("section");
+      const navbar = document.getElementById("navbar");
+      const navToggle = document.getElementById("nav-toggle");
+      const navMenu = document.getElementById("nav-menu");
+      const closeNav = document.getElementById("close-nav");
+
+      function changeNavOnScroll() {
+        let scrollPos = window.scrollY + 100;
+
+        sections.forEach((section) => {
+          let top = section.offsetTop;
+          let height = section.offsetHeight;
+          let id = section.getAttribute("id");
+
+          if (scrollPos >= top && scrollPos < top + height) {
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+
+        if (window.scrollY > 50) {
+          navbar.classList.add("nav-scrolled");
+        } else {
+          navbar.classList.remove("nav-scrolled");
+        }
+      }
+
+      navToggle.addEventListener("click", () => {
+        navMenu.classList.remove("hidden");
+      });
+
+      closeNav.addEventListener("click", () => {
+        navMenu.classList.add("hidden");
+      });
+
+      window.addEventListener("scroll", changeNavOnScroll);
+    });
+
+    function goToProvince() {
+      var select = document.getElementById("province-select");
+      var province = select.value;
+      if (province) {
+        window.location.href = "/" + province;
+      } else {
+        alert("Silakan pilih provinsi terlebih dahulu!");
+      }
+    }
+
+    function filterProvince() {
+      var input = document.getElementById("search-input");
+      var filter = input.value.toLowerCase();
+      var select = document.getElementById("province-select");
+      var options = select.options;
+
+      for (var i = 0; i < options.length; i++) {
+        var text = options[i].text.toLowerCase();
+        if (text.includes(filter) || options[i].value.includes(filter)) {
+          options[i].style.display = "";
+        } else {
+          options[i].style.display = "none";
+        }
+      }
+    }
+    function redirectToProvinsi() {
+      const provinsi = document.getElementById("provinsi").value;
+      if (provinsi) {
+        window.location.href = `provinsi/${provinsi}.html`; // Tambahin "/" di depan
+      }
+    }
+      const resepList = [
+        {
+          id: 1,
+          nama: "Sup Gangan",
+          daerah: "Bangka Belitung",
+          kategori: "gurih",
+          gambar: "assets/kuliner/supgangan.png",
+          bahan: [
+            "500 gram ikan tenggiri potong-potong",
+            "1 liter air",
+            "2 batang serai, memarkan",
+            "5 lembar daun jeruk",
+            "2 sdm air asam jawa",
+            "1 buah nanas kecil, potong dadu",
+            "Garam dan gula secukupnya",
+            "Bumbu halus: 7 siung bawang merah, 5 siung bawang putih, 3 cm kunyit, 2 cm jahe",
+          ],
+          cara: [
+            "Rebus air, masukkan bumbu halus, daun jeruk, dan serai hingga harum.",
+            "Masukkan ikan, masak hingga matang.",
+            "Tambahkan air asam dan nanas, bumbui dengan garam dan gula.",
+            "Masak hingga bumbu meresap dan kuah sedikit mengental.",
+          ],
+        },
+        {
+          id: 2,
+          nama: "Rebeg",
+          daerah: "Banten",
+          kategori: "pedas",
+          gambar: "assets/kuliner/rebeg.png",
+          bahan: ["500 gram daging kambing potong kecil", "3 lembar daun salam", "2 batang serai, memarkan", "1 liter air", "Bumbu halus: 8 bawang merah, 5 bawang putih, 5 cabai merah, 1 cm jahe, 1 cm lengkuas, garam, gula"],
+          cara: ["Tumis bumbu halus hingga harum, masukkan serai dan daun salam.", "Masukkan daging kambing, aduk rata.", "Tuang air, masak hingga daging empuk dan kuah meresap."],
+        },
+        {
+          id: 3,
+          nama: "Kue Bay Tat",
+          daerah: "Bengkulu",
+          kategori: "manis",
+          gambar: "assets/kuliner/kue bay tak.png",
+          bahan: ["250 gram tepung terigu", "100 gram margarin", "1 butir kuning telur", "50 ml susu kental manis", "Selai nanas secukupnya"],
+          cara: ["Campur tepung, margarin, kuning telur, dan susu hingga menjadi adonan.", "Cetak adonan dan beri isian selai nanas.", "Panggang hingga matang dan berwarna keemasan."],
+        },
+        {
+          id: 4,
+          nama: "Rujak Bulung",
+          daerah: "DKI Jakarta",
+          kategori: "unik",
+          gambar: "assets/kuliner/rujak bulung.png",
+          bahan: ["100 gram rumput laut (bulung)", "1 buah jeruk limau", "Sambal: 5 cabai rawit, 1 siung bawang putih, terasi, garam, air matang"],
+          cara: ["Rebus bulung sebentar, tiriskan.", "Ulek sambal hingga halus, tambahkan air dan perasan jeruk.", "Campur bulung dengan sambal, sajikan segar."],
+        },
+        {
+          id: 5,
+          nama: "Binte Biluhuta",
+          daerah: "Gorontalo",
+          kategori: "gurih",
+          gambar: "assets/kuliner/binten biluhuka.png",
+          bahan: ["2 buah jagung manis, pipil", "100 gram ikan cakalang suwir", "5 siung bawang merah, iris", "2 siung bawang putih, cincang", "2 buah cabai rawit, iris", "Daun kemangi, jeruk nipis, garam, air secukupnya"],
+          cara: ["Rebus jagung hingga empuk.", "Tumis bawang merah, putih, dan cabai hingga harum.", "Masukkan tumisan dan ikan suwir ke dalam rebusan jagung.", "Tambahkan daun kemangi dan perasan jeruk nipis. Sajikan hangat."],
+        },
+        {
+          id: 6,
+          nama: "Tempoyak",
+          daerah: "Jambi",
+          kategori: "unik",
+          gambar: "assets/kuliner/tempoyak.png",
+          bahan: ["200 gram daging durian fermentasi", "5 siung bawang merah", "3 siung bawang putih", "3 cabai merah", "1 sdt terasi", "1 batang serai, memarkan", "1 sdm minyak goreng"],
+          cara: ["Haluskan bawang, cabai, dan terasi.", "Tumis bumbu hingga harum, masukkan serai dan tempoyak.", "Masak sambil diaduk hingga matang dan mengeluarkan aroma khas."],
+        },
+        {
+          id: 7,
+          nama: "Karedok",
+          daerah: "Jawa Barat",
+          kategori: "gurih",
+          gambar: "assets/kuliner/karedok.png",
+          bahan: ["100 gram kacang panjang, iris", "50 gram tauge", "1 buah mentimun, iris", "1 buah terong lalap, iris", "Bumbu kacang: kacang tanah goreng, gula merah, cabai rawit, kencur, garam, air asam"],
+          cara: ["Haluskan bumbu kacang dengan air asam.", "Campur sayuran mentah dengan bumbu kacang.", "Sajikan segar dengan kerupuk."],
+        },
+        {
+          id: 8,
+          nama: "Soto Kudus",
+          daerah: "Jawa Tengah",
+          kategori: "gurih",
+          gambar: "assets/kuliner/sotokudus.png",
+          bahan: ["500 gram ayam kampung, rebus dan suwir", "2 liter air kaldu ayam", "4 lembar daun jeruk", "2 batang serai, memarkan", "Bumbu halus: bawang merah, bawang putih, kemiri, kunyit, jahe, merica, garam"],
+          cara: ["Tumis bumbu halus hingga harum, masukkan ke dalam kaldu.", "Masukkan suwiran ayam, daun jeruk, dan serai.", "Masak hingga kuah matang. Sajikan dengan nasi dan pelengkap."],
+        },
+        {
+          id: 9,
+          nama: "Rawon",
+          daerah: "Jawa Timur",
+          kategori: "gurih",
+          gambar: "assets/kuliner/rawon.png",
+          bahan: ["500 gram daging sapi, potong", "2 liter air", "5 buah keluak, ambil isinya", "Bumbu halus: bawang merah, bawang putih, kemiri, ketumbar, kunyit, jahe, lengkuas", "Serai, daun jeruk, garam, gula"],
+          cara: ["Tumis bumbu halus bersama keluak.", "Rebus daging hingga empuk, masukkan bumbu tumis.", "Masak hingga bumbu meresap dan kuah menghitam."],
+        },
+        {
+          id: 10,
+          nama: "Pengkang",
+          daerah: "Kalimantan Barat",
+          kategori: "gurih",
+          gambar: "assets/kuliner/pengkang.png",
+          bahan: ["500 gram beras ketan, rendam dan kukus", "200 gram kelapa parut", "150 gram ebi halus", "Daun pisang dan tusuk bambu"],
+          cara: ["Campur ketan kukus dengan kelapa dan ebi.", "Bungkus dalam daun pisang, bentuk segitiga.", "Tusuk dan bakar di atas bara api hingga harum."],
+        },
+        {
+          id: 11,
+          nama: "Gangan Humbut",
+          daerah: "Kalimantan Selatan",
+          kategori: "gurih",
+          gambar: "assets/kuliner/gangan humbut.png",
+          bahan: ["300 gram umbut kelapa muda", "500 ml santan", "2 batang serai, memarkan", "5 lembar daun jeruk", "Bumbu halus: bawang merah, bawang putih, kunyit, lengkuas, jahe, garam"],
+          cara: ["Tumis bumbu halus hingga harum, masukkan serai dan daun jeruk.", "Masukkan umbut kelapa, aduk rata.", "Tuang santan dan masak dengan api kecil hingga umbut empuk dan bumbu meresap."],
+        },
+        {
+          id: 12,
+          nama: "Karuang",
+          daerah: "Kalimantan Tengah",
+          kategori: "unik",
+          gambar: "assets/kuliner/karuang.png",
+          bahan: ["300 gram daging babi asap (bisa diganti ayam jika diperlukan)", "2 buah terong ungu, potong-potong", "2 buah cabai merah besar, iris", "3 siung bawang putih, iris", "Garam dan merica secukupnya"],
+          cara: ["Tumis bawang dan cabai hingga harum.", "Masukkan daging dan terong, aduk rata.", "Masak hingga terong lunak dan bumbu meresap."],
+        },
+        {
+          id: 13,
+          nama: "Nasi Bekepor",
+          daerah: "Kalimantan Timur",
+          kategori: "gurih",
+          gambar: "assets/kuliner/nasi bekepor.png",
+          bahan: ["2 gelas beras", "1 ekor ikan asin atau ikan gabus asap", "2 sdm minyak sayur", "Bumbu halus: bawang merah, bawang putih, kemiri, kunyit, garam"],
+          cara: ["Tumis bumbu hingga harum.", "Tambahkan ikan dan aduk sebentar.", "Masukkan beras dan air secukupnya, masak seperti nasi biasa."],
+        },
+        {
+          id: 14,
+          nama: "Kue Lapis Campedak",
+          daerah: "Kalimantan Utara",
+          kategori: "manis",
+          gambar: "assets/kuliner/kue lapis campedak.png",
+          bahan: ["200 gram daging buah campedak", "250 gram tepung beras", "200 ml santan", "150 gram gula merah cair", "Garam secukupnya"],
+          cara: ["Campur semua bahan hingga rata.", "Tuang sedikit demi sedikit ke loyang secara berlapis, kukus tiap lapisan 5 menit.", "Lakukan hingga adonan habis, kukus total selama 30 menit."],
+        },
+        {
+          id: 15,
+          nama: "Roti Jala",
+          daerah: "Kepulauan Riau",
+          kategori: "manis",
+          gambar: "assets/kuliner/roti jala.png",
+          bahan: ["250 gram tepung terigu", "1 butir telur", "400 ml santan cair", "Sejumput garam", "Pewarna makanan kuning (opsional)"],
+          cara: ["Campur semua bahan hingga menjadi adonan cair.", "Masukkan ke botol lubang kecil atau cetakan roti jala.", "Cetak seperti jala di atas teflon panas hingga matang, sajikan dengan kuah kari."],
+        },
+        {
+          id: 16,
+          nama: "Seruit",
+          daerah: "Lampung",
+          kategori: "gurih",
+          gambar: "assets/kuliner/seruit.png",
+          bahan: ["1 ekor ikan nila atau patin, bakar dan suwir", "2 siung bawang putih", "4 siung bawang merah", "5 cabai merah", "1 buah terasi bakar", "2 sdm air jeruk nipis", "Garam, gula secukupnya", "Petai dan tempoyak (opsional)"],
+          cara: ["Haluskan bawang, cabai, dan terasi, tambahkan jeruk nipis, garam dan gula.", "Campur sambal dengan suwiran ikan bakar.", "Sajikan dengan lalapan dan nasi hangat."],
+        },
+        {
+          id: 17,
+          nama: "Ikan Bakar Colo-Colo",
+          daerah: "Maluku",
+          kategori: "pedas",
+          gambar: "assets/kuliner/ikan bakar colo.png",
+          bahan: ["1 ekor ikan kakap atau baronang, bersihkan", "Jeruk nipis, garam", "Sambal colo-colo: tomat, cabai rawit, bawang merah, jeruk nipis, kecap"],
+          cara: ["Lumuri ikan dengan jeruk nipis dan garam, bakar hingga matang.", "Campur bahan sambal colo-colo, aduk rata.", "Sajikan ikan bakar dengan sambal colo-colo."],
+        },
+        {
+          id: 18,
+          nama: "Gohu Ikan",
+          daerah: "Maluku Utara",
+          kategori: "unik",
+          gambar: "assets/kuliner/gohu ikan.png",
+          bahan: ["200 gram ikan tuna segar, potong dadu kecil", "1 sdt garam", "2 sdm air jeruk nipis", "5 siung bawang merah, iris", "5 buah cabai rawit, iris", "1 sdm minyak kelapa panas"],
+          cara: ["Rendam ikan dengan jeruk nipis dan garam hingga matang secara kimiawi.", "Tambahkan irisan bawang dan cabai, siram dengan minyak panas.", "Aduk rata dan sajikan segera."],
+        },
+        {
+          id: 19,
+          nama: "Sei Sapi",
+          daerah: "NTT",
+          kategori: "gurih",
+          gambar: "assets/kuliner/sei sapi.png",
+          bahan: ["500 gram daging sapi asap (sei)", "2 siung bawang putih, haluskan", "1 sdm merica bubuk", "Garam, minyak secukupnya", "Sambal lu'at untuk pelengkap"],
+          cara: ["Iris sei sapi tipis, panaskan dengan sedikit minyak dan bawang putih.", "Bumbui dengan garam dan merica.", "Sajikan dengan sambal lu'at dan nasi panas."],
+        },
+        {
+          id: 20,
+          nama: "Ayam Taliwang",
+          daerah: "NTB",
+          kategori: "pedas",
+          gambar: "assets/kuliner/ayam taliwang.png",
+          bahan: ["1 ekor ayam kampung, belah tengah", "Bumbu: 5 cabai merah, 3 cabai rawit, 6 bawang merah, 3 bawang putih, tomat, terasi, garam, gula", "2 sdm minyak untuk menumis"],
+          cara: ["Haluskan bumbu, tumis hingga harum.", "Baluri ayam dengan bumbu, bakar sambil sesekali dioles bumbu.", "Masak hingga ayam matang dan bumbu meresap."],
+        },
+        {
+          id: 21,
+          nama: "Papeda",
+          daerah: "Papua",
+          kategori: "unik",
+          gambar: "assets/kuliner/papeda.png",
+          bahan: ["100 gram sagu basah", "500 ml air panas", "Ikan kuah kuning: ikan tongkol, kunyit, bawang, daun kemangi"],
+          cara: ["Larutkan sagu dengan sedikit air dingin.", "Tuang air panas sambil diaduk cepat hingga mengental seperti lem.", "Sajikan dengan ikan kuah kuning."],
+        },
+        {
+          id: 22,
+          nama: "Ikan Bakar Monokrawi",
+          daerah: "Papua Barat",
+          kategori: "gurih",
+          gambar: "assets/kuliner/ikan bakar monokrawi.png",
+          bahan: ["1 ekor ikan kakap, bersihkan dan belah", "Jeruk nipis, garam, merica", "Daun pisang untuk membungkus", "Bumbu bakar: bawang merah, bawang putih, kemiri, kunyit, jahe, cabai merah, garam"],
+          cara: ["Lumuri ikan dengan bumbu halus dan rempah, bungkus dengan daun pisang.", "Bakar di atas bara api hingga matang merata.", "Sajikan dengan sambal dan nasi panas."],
+        },
+        {
+          id: 23,
+          nama: "Udang Selingkuh",
+          daerah: "Papua Barat Daya",
+          kategori: "unik",
+          gambar: "assets/kuliner/udang selingkuh.png",
+          bahan: ["500 gram udang air tawar besar (udang selingkuh)", "2 siung bawang putih, cincang", "1 sdm mentega", "Garam, merica, dan air jeruk nipis"],
+          cara: ["Cuci udang, lumuri dengan jeruk nipis dan diamkan sejenak.", "Tumis bawang dengan mentega, masukkan udang.", "Masak hingga udang matang dan berubah warna."],
+        },
+        {
+          id: 24,
+          nama: "Sate Ulat Sagu",
+          daerah: "Papua Pegunungan",
+          kategori: "unik",
+          gambar: "assets/kuliner/sate ulat sagu.png",
+          bahan: ["20 ulat sagu segar", "Tusuk sate", "Garam dan jeruk nipis untuk merendam"],
+          cara: ["Cuci bersih ulat sagu, rendam sebentar dengan jeruk nipis dan garam.", "Tusuk ulat pada tusukan sate.", "Bakar hingga permukaan kecokelatan dan matang."],
+        },
+        {
+          id: 25,
+          nama: "Sagu Sep",
+          daerah: "Papua Selatan",
+          kategori: "unik",
+          gambar: "assets/kuliner/sagu sep.png",
+          bahan: ["200 gram sagu kering", "Kelapa parut, garam secukupnya", "Air panas"],
+          cara: ["Campur sagu dengan kelapa parut dan sedikit garam.", "Tambahkan air panas sedikit demi sedikit hingga bisa dipadatkan.", "Panggang di atas wajan hingga kering."],
+        },
+        {
+          id: 26,
+          nama: "Kue Lontar",
+          daerah: "Papua Tengah",
+          kategori: "manis",
+          gambar: "assets/kuliner/kue lontar.png",
+          bahan: ["200 gram tepung terigu", "150 gram mentega", "500 ml susu kental manis", "5 butir telur", "Vanili dan gula secukupnya"],
+          cara: ["Campur tepung dan mentega, bentuk kulit pie dan panggang sebentar.", "Campur susu, telur, vanili, dan gula, tuang ke atas kulit pie.", "Panggang kembali hingga matang dan permukaan menguning."],
+        },
+        {
+          id: 27,
+          nama: "Gulai Belacan",
+          daerah: "Riau",
+          kategori: "pedas",
+          gambar: "assets/kuliner/gulai belacan.png",
+          bahan: ["500 gram udang", "2 sdm belacan (terasi)", "5 siung bawang merah", "3 siung bawang putih", "5 buah cabai merah", "2 batang serai, geprek", "200 ml santan", "Garam dan gula secukupnya"],
+          cara: ["Haluskan bawang, cabai, dan belacan, lalu tumis hingga harum.", "Masukkan serai, santan, udang, dan bumbu lainnya.", "Masak hingga udang matang dan kuah mengental."],
+        },
+        {
+          id: 28,
+          nama: "Jepa",
+          daerah: "Sulawesi Barat",
+          kategori: "unik",
+          gambar: "assets/kuliner/jepa.png",
+          bahan: ["200 gram singkong parut", "Kelapa parut secukupnya", "Garam", "Daun pisang untuk membakar"],
+          cara: ["Campurkan singkong parut dengan kelapa dan garam.", "Bentuk bulat pipih, bungkus dengan daun pisang.", "Panggang hingga matang dan kering."],
+        },
+        {
+          id: 29,
+          nama: "Kaledo",
+          daerah: "Sulawesi Tengah",
+          kategori: "gurih",
+          gambar: "assets/kuliner/kaledo.png",
+          bahan: ["1 kg tulang kaki sapi (dengan sumsum)", "4 siung bawang putih", "Garam dan jeruk nipis", "Cabai rawit sebagai pelengkap"],
+          cara: ["Rebus tulang sapi hingga empuk.", "Tambahkan bawang, garam, dan bumbu lainnya.", "Sajikan panas dengan cabai dan jeruk nipis."],
+        },
+        {
+          id: 30,
+          nama: "Lapa-lapa",
+          daerah: "Sulawesi Tenggara",
+          kategori: "gurih",
+          gambar: "assets/kuliner/lapalapa.png",
+          bahan: ["500 gram beras ketan", "Santan kental", "Garam secukupnya", "Daun pisang untuk membungkus"],
+          cara: ["Rendam beras ketan semalaman.", "Kukus setengah matang, lalu campur dengan santan dan garam.", "Bungkus dalam daun pisang dan kukus hingga matang."],
+        },
+        {
+          id: 31,
+          nama: "Tinutuan",
+          daerah: "Sulawesi Utara",
+          kategori: "gurih",
+          gambar: "assets/kuliner/tinutuan.png",
+          bahan: ["1 cangkir nasi", "Bayam, kangkung, jagung manis, labu kuning", "Garam, bawang merah, daun bawang"],
+          cara: ["Masak nasi dengan air dan sayuran hingga menjadi bubur.", "Tambahkan bumbu dan daun bawang, aduk rata.", "Sajikan hangat dengan sambal dan pelengkap lain."],
+        },
+        {
+          id: 32,
+          nama: "Rendang",
+          daerah: "Sumatera Barat",
+          kategori: "gurih",
+          gambar: "assets/kuliner/rendang.png",
+          bahan: ["1 kg daging sapi", "1 liter santan kental", "10 siung bawang merah", "6 siung bawang putih", "10 buah cabai merah", "2 batang serai", "2 cm lengkuas, geprek", "Daun jeruk, daun kunyit", "Garam, gula, dan rempah lain"],
+          cara: [
+            "Haluskan semua bumbu, lalu tumis hingga harum dan matang.",
+            "Masukkan potongan daging sapi ke dalam bumbu, aduk rata hingga daging berubah warna.",
+            "Tuang santan secara perlahan, kecilkan api, lalu masak rendang selama 3–4 jam sambil diaduk sesekali hingga kuah mengering dan bumbu meresap sempurna ke dalam daging.",
+          ],
+        },
+        {
+          id: 33,
+          nama: "Pempek",
+          daerah: "Sumatera Selatan",
+          kategori: "gurih",
+          gambar: "assets/kuliner/pempek.png",
+          bahan: ["500 gram daging ikan tenggiri giling", "250 gram tepung sagu", "Garam, air dingin", "Bahan cuko: gula merah, asam jawa, bawang putih, cabai, garam"],
+          cara: [
+            "Campur ikan giling dengan garam dan air es sampai adonan mengental.",
+            "Masukkan tepung sagu sedikit demi sedikit sambil diaduk hingga kalis.",
+            "Bentuk adonan sesuai jenis pempek yang diinginkan, lalu rebus dalam air mendidih hingga mengapung dan matang.",
+            "Untuk cuko, rebus semua bahan dengan air hingga mendidih, lalu saring dan sajikan bersama pempek.",
+          ],
+        },
+        {
+          id: 34,
+          nama: "Bika Ambon",
+          daerah: "Sumatera Utara",
+          kategori: "manis",
+          gambar: "assets/kuliner/bika ambon.png",
+          bahan: ["200 gram tepung tapioka", "100 gram tepung terigu", "250 ml santan", "200 gram gula", "5 butir telur", "Ragi instan, daun jeruk, daun pandan"],
+          cara: [
+            "Masak santan dengan daun pandan dan daun jeruk hingga harum, lalu dinginkan.",
+            "Kocok telur dan gula hingga mengembang dan larut, lalu masukkan campuran tepung dan santan secara bertahap.",
+            "Tambahkan ragi, aduk rata, dan diamkan adonan selama 1 jam hingga berbuih.",
+            "Tuangkan adonan ke dalam loyang, lalu panggang dalam oven panas sampai matang dan bagian atasnya kecokelatan.",
+          ],
+        },
+        {
+          id: 35,
+          nama: "Gudeg",
+          daerah: "DI Yogyakarta",
+          kategori: "manis",
+          gambar: "assets/kuliner/gudeg.png",
+          bahan: ["1 kg nangka muda", "500 ml santan", "Bawang merah, bawang putih", "Gula merah, daun salam, lengkuas", "Telur rebus, ayam (opsional)"],
+          cara: [
+            "Tumis bumbu halus hingga harum, lalu masukkan ke dalam panci berisi nangka yang sudah direbus.",
+            "Tambahkan santan, daun salam, gula merah, dan lengkuas. Masak dengan api kecil hingga bumbu meresap dan kuah menyusut.",
+            "Tambahkan telur rebus atau ayam jika digunakan, dan teruskan memasak hingga warna gudeg menjadi coklat keemasan serta bumbu benar-benar meresap.",
+          ],
+        },
+        {
+          id: 36,
+          nama: "Mie Aceh",
+          daerah: "Nanggroe Aceh Darussalam",
+          kategori: "pedas",
+          gambar: "assets/kuliner/mie aceh.png",
+          bahan: ["Mie kuning tebal", "Daging sapi/kambing/udang", "Bumbu rempah: bawang merah, bawang putih, cabai, kapulaga, jintan", "Tomat, kol, daun bawang"],
+          cara: [
+            "Haluskan dan tumis bumbu rempah hingga harum.",
+            "Masukkan potongan daging dan sayuran, aduk rata hingga daging matang dan sayuran layu.",
+            "Tambahkan mie kuning, aduk hingga bumbu meresap.",
+            "Sajikan mie Aceh panas-panas dengan pelengkap seperti emping dan acar.",
+          ],
+        },
+        {
+          id: 37,
+          nama: "Coto Makassar",
+          daerah: "Sulawesi Selatan",
+          kategori: "gurih",
+          gambar: "assets/kuliner/coto makasar.png",
+          bahan: ["500 gram daging sapi", "Bumbu kacang sangrai", "Bawang putih, serai, lengkuas", "Ketupat untuk penyajian"],
+          cara: [
+            "Rebus daging sapi dengan air hingga empuk, angkat dan potong-potong.",
+            "Tumis bumbu halus dan rempah hingga matang dan wangi.",
+            "Masukkan bumbu ke dalam kaldu rebusan, tambahkan kacang sangrai yang sudah dihaluskan.",
+            "Masak hingga bumbu meresap dan kuah mengental. Sajikan bersama potongan ketupat.",
+          ],
+        },
+        {
+          id: 38,
+          nama: "Sate Lilit",
+          daerah: "Bali",
+          kategori: "gurih",
+          gambar: "assets/kuliner/satelilit.png",
+          bahan: [
+            "500 gram ayam giling",
+            "250 gram kelapa parut",
+            "15 batang serai",
+            "Bumbu: bawang merah, putih, lengkuas, jahe, kencur, kunyit, serai, cabai, terasi, daun jeruk, ketumbar, merica, gula merah, garam, kaldu jamur, santan, minyak kelapa",
+          ],
+          cara: [
+            "Haluskan semua bumbu dan tumis dengan minyak kelapa hingga harum dan matang.",
+            "Campurkan ayam giling, kelapa parut, bumbu halus, santan, serta bumbu kering lainnya dalam wadah besar.",
+            "Ambil secukupnya adonan, lilitkan pada batang serai hingga padat dan rapi.",
+            "Grill sate lilit di atas teflon dengan api kecil, bolak-balik hingga matang merata dan permukaan agak kecoklatan.",
+          ],
+        },
+      ];
+
+      function tampilkanResep(data = resepList) {
+        const container = document.querySelector(".grid");
+        container.innerHTML = "";
+
+        data.forEach((resep) => {
+          container.innerHTML += `
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img alt="Gambar dari ${resep.nama}" class="w-full h-48 object-cover" height="400" src="${resep.gambar}" width="600"/>
+            <div class="p-4">
+                <h2 class="text-lg font-bold">${resep.nama}</h2>
+                <p class="text-gray-600">${resep.daerah} - ${resep.kategori}</p>
+                <div class="text-right">
+                    <i class="fas fa-chevron-down cursor-pointer toggle-icon" onclick="toggleContent('content-${resep.id}')"></i>
+                </div>
+                <div class="hidden-content" id="content-${resep.id}">
+                    <h4>Bahan-bahan:</h4>
+                    <ul>${resep.bahan.map((item) => `<li>${item}</li>`).join("")}</ul>
+                    <h4>Cara Memasak:</h4>
+                    <ol>${resep.cara.map((item) => `<li>${item}</li>`).join("")}</ol>
+                </div>
+            </div>
+        </div>
+      `;
+        });
+      }
+
+      function filterResep() {
+        const kategori = document.getElementById("filter").value;
+        if (kategori === "all") {
+          tampilkanResep(resepList);
+        } else {
+          const hasil = resepList.filter((r) => r.kategori === kategori);
+          tampilkanResep(hasil);
+        }
+      }
+
+      function toggleContent(id) {
+        const content = document.getElementById(id);
+        const icon = content.previousElementSibling.querySelector("i");
+
+        if (content.classList.contains("hidden-content")) {
+          content.classList.remove("hidden-content");
+          icon.classList.remove("fa-chevron-down");
+          icon.classList.add("fa-chevron-up");
+        } else {
+          content.classList.add("hidden-content");
+          icon.classList.remove("fa-chevron-up");
+          icon.classList.add("fa-chevron-down");
+        }
+      }
+
+      tampilkanResep();
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const sections = document.querySelectorAll("section");
+        const navbar = document.getElementById("navbar");
+        const navToggle = document.getElementById("nav-toggle");
+        const navMenu = document.getElementById("nav-menu");
+        const closeNav = document.getElementById("close-nav");
+
+        function changeNavOnScroll() {
+          let scrollPos = window.scrollY + 100;
+
+          sections.forEach((section) => {
+            let top = section.offsetTop;
+            let height = section.offsetHeight;
+            let id = section.getAttribute("id");
+
+            if (scrollPos >= top && scrollPos < top + height) {
+              navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${id}`) {
+                  link.classList.add("active");
+                }
+              });
+            }
+          });
+
+          if (window.scrollY > 50) {
+            navbar.classList.add("nav-scrolled");
+          } else {
+            navbar.classList.remove("nav-scrolled");
+          }
+        }
+
+        navToggle.addEventListener("click", () => {
+          navMenu.classList.remove("hidden");
+        });
+
+        closeNav.addEventListener("click", () => {
+          navMenu.classList.add("hidden");
+        });
+
+        window.addEventListener("scroll", changeNavOnScroll);
+      });
+    </script>
+  </body>
+</html>

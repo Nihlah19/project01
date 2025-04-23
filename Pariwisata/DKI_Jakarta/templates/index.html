@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Destinasi Wisata DKI Jakarta</title>
+    <style>
+      .card {
+        position: relative;
+      }
+
+      .logo-circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 2px 6px #ff9d23;
+        z-index: 2;
+      }
+
+      .logo-circle img {
+        width: 105px;
+        height: 105px;
+        object-fit: contain;
+      }
+
+      .cards {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        width: auto;
+      }
+
+      .cards .card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        width: 250px;
+        border-radius: 10px;
+        color: rgb(10, 10, 10);
+        cursor: pointer;
+        transition: 400ms;
+        box-shadow: 0.8em 0.8em 0.8em #d8dae0b1, 0.8em 0.8em 0.8em #ffffff;
+        border: 1.5px solid #f2f3f7;
+        background-color: #ff9d2380;
+        padding: 10px;
+        margin-top: 70px;
+        padding-top: 35px;
+      }
+
+      .cards .card p.tip {
+        font-size: 1em;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      .cards .card p.second-text {
+        font-size: 0.9em;
+        text-align: left;
+        width: 90%;
+        margin: 2px 0;
+        line-height: 1.2;
+      }
+
+      .cards .card:hover {
+        transform: scale(1.1);
+        background-color: #ff9d233d;
+      }
+
+      .cards:hover > .card:not(:hover) {
+        transform: scale(0.95);
+      }
+
+      .stars {
+        color: #f09027;
+        margin-left: 5px;
+        font-size: 1.1em;
+      }
+
+      button {
+        padding: 5px;
+        border: 2px solid #b5592a;
+        border-radius: 5px;
+        background-color: transparent;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 12px;
+        transition: 0.3s;
+        z-index: 1;
+        font-family: inherit;
+        margin-top: 8px;
+      }
+
+      button:hover {
+        color: #111;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center; color: #2c3e50">Top 3 Destinasi Wisata DKI Jakarta</h1>
+    <div class="cards">
+      {% for row in results %}
+      <div class="card">
+        <div class="logo-circle">
+          <img src="{{ url_for('static', filename='asset/logo.png') }}" alt="logo" />
+        </div>
+        <p class="tip">{{ row.name }}</p>
+        {% set full_stars = row.rating_asli|round(0, 'floor') %} {% set empty_stars = 5 - full_stars %}
+        <p class="second-text">
+          Rating: {{ row.rating_asli }}
+          <span class="stars">{{ row.stars|safe }}</span>
+        </p>
+        <p class="second-text">
+          Rating Prediksi: {{ row.rating_prediksi }}
+          <span class="stars">{{ row.stars|safe }}</span>
+        </p>
+        <button>
+          <a href="{{ row.google_maps_url }}" target="_blank">Lihat Lokasi</a>
+        </button>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
