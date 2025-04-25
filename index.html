@@ -33,6 +33,17 @@
       h1 {
         font-family: "Jolly Lodger";
       }
+      #musicButton {
+        font-size: 20px;
+        cursor: pointer;
+        color: #f0df27;
+        padding: 5px;
+        border: none;
+        background-color: transparent;
+      }
+      #musicButton:hover {
+        color: #f7f7f7;
+      }
     </style>
   </head>
   <body class="bg-gray-100 font-sans m-0">
@@ -40,6 +51,17 @@
       <h1 class="text-4xl text-yellow-400" style="width: 180px">Visit Nusantara</h1>
 
       <div class="flex items-center space-x-3">
+        <!--musik-->
+        <!-- Tombol kontrol speaker -->
+        <button id="musicButton" onclick="toggleAudio()">
+          <i class="fa-solid fa-volume-mute"></i>
+        </button>
+
+        <!-- Audio (disembunyikan) -->
+        <audio id="audioPlayer" autoplay loop>
+          <source src="Assets/backsound.mp3" type="audio/mpeg" />
+          Browser kamu tidak mendukung audio.
+        </audio>
         <!-- Tombol Login -->
         <a href="loginpage.html" class="bg-yellow-300 text-white text-5x1 px-5 py-2 rounded shadow-md hover:bg-yellow-400 transition" type="button">Login</a>
 
@@ -138,7 +160,7 @@
       style="background-image: url('Assets/gunung.jpeg'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 50vh; width: 100%"
     >
       <div class="max-w-lg mt-8">
-        <h1 class="text-2xl font-bold" style="font-family: 'Inknut Antiqua', serif">PARIWISATA DAN BUDAYA<br /><span class="text-lg">BANGSA</span></h1>
+        <h1 class="text-2xl font-bold" style="font-family: 'Inknut Antiqua', serif">PARIWISATA DAN BUDAYA<br /><span class="text-2xl">BANGSA</span></h1>
         <p class="text-sm mt-2">Temukan warna, cerita, dan rasa dari setiap sudut Indonesia. Rasa Nusantara mengajak Anda menjelajahi kekayaan budaya lewat pengalaman digital yang informatif dan menyenangkan.</p>
         <button class="mt-6 px-3 py-1 border-2 border-transparent text-white bg-[#B5592A] bg-opacity-80 rounded-full font-semibold shadow-md hover:bg-opacity-100 transition duration-300">Mulai</button>
       </div>
@@ -363,6 +385,27 @@
           window.location.href = `provinsi/${provinsi}.html`; // Tambahin "/" di depan
         }
       }
+      const audioPlayer = document.getElementById("audioPlayer");
+      const musicButton = document.getElementById("musicButton");
+
+      function toggleAudio() {
+        if (audioPlayer.muted) {
+          audioPlayer.muted = false;
+          musicButton.innerHTML = '<i class="fa-solid fa-volume-up"></i>';
+        } else {
+          audioPlayer.muted = true;
+          musicButton.innerHTML = '<i class="fa-solid fa-volume-mute"></i>';
+        }
+      }
+
+      // Set ikon awal berdasarkan status audio
+      window.onload = () => {
+        if (audioPlayer.muted) {
+          musicButton.innerHTML = '<i class="fa-solid fa-volume-mute"></i>';
+        } else {
+          musicButton.innerHTML = '<i class="fa-solid fa-volume-up"></i>';
+        }
+      };
     </script>
   </body>
 </html>
